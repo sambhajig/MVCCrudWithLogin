@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="MyDBModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="MyDBModel.FK_Employee_ToTable" ManuallyRouted="false" />
         <EntityTypeShape EntityType="MyDBModel.User" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MyDBModel.UserRole" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="MyDBModel.FK_UserRole_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace MVCTest.Controllers
 {
-   
+   [Authorize]
     public class HomeController : Controller
     {
 
@@ -26,12 +26,13 @@ namespace MVCTest.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddEmp()
         {
             return View();
         }
 
-
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         public ActionResult AddEmp(EmployeeModel model)
         {
@@ -61,13 +62,15 @@ namespace MVCTest.Controllers
             return View(result);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult EditEmp(int id)
         {
             var result = repository.GetSingleEmp(id);
             return View(result);
            
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditEmp(EmployeeModel model)
         {
@@ -86,7 +89,7 @@ namespace MVCTest.Controllers
         //    return View();
         //}
 
-        
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteEmp(int id)
         {
             repository.DeleteEmp(id);
