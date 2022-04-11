@@ -1,0 +1,149 @@
+﻿@model IEnumerable<MVCTest.Model.EmployeeModel>
+
+@{
+    ViewBag.Title = "Get All Emp";
+}
+
+<h2>GetAllEmp</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddEmp")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.Country)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address.Details)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address.State)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address.Country)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditEmp", new { id = item.Id }) |
+        @Html.ActionLink("Details", "GetSingleEmp", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "DeleteEmp", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>
+
+<hr />
+
+<h2>Get Data using Json</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.Country)
+        </th>
+        <th></th>
+    </tr>
+    <tbody id="tblid">
+
+    </tbody>
+
+    
+
+
+</table>
+
+<script>
+
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "/Home/JsonTest",
+            method: "GET",
+            success: function (data) {
+                console.log(data);
+                data = JSON.parse(data);
+
+                $.each(data, function (i, val) {
+                    var trow = $('<tr></tr>');
+                    trow.append('<td>' + val.FirstName + '</td>');
+                    trow.append('<td>' + val.LastName + '</td>');
+                    trow.append('<td>' + val.Email + '</td>');
+                    trow.append('<td>' + val.Code + '</td>');
+                    trow.append('<td>' + val.Address.Details + '</td>');
+                    trow.append('<td>' + val.Address.State + '</td>');
+                    trow.append('<td>' + val.Address.Country + '</td>');
+                    trow.append('<td><a href="/Home/EditEmp/' + val.Id + ' " class="btn btn-sm btn-outline-primary">Edit</a>|<a href="/Home/GetSingleEmp/' + val.Id + ' " class="btn btn-sm btn-outline-primary">Details</a>|<a href="/Home/DeleteEmp/' + val.Id + ' " class="btn btn-sm btn-outline-primary">Delete</a></td>');
+                   // trow.append('<td><a href="/Home/GetSingleEmp/' + val.Id + ' " class="btn btn-sm btn-outline-primary">Details</a></td>');
+                   // trow.append('<td><a href="/Home/DeleteEmp/' + val.Id + ' " class="btn btn-sm btn-outline-primary">Delete</a></td>');
+                    $("#tblid").append(trow);
+                });
+
+                console.log(data);
+
+            },
+            error: function (err) {
+                console.error(err);
+            }
+
+        });
+    });
+
+</script>
+

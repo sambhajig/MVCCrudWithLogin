@@ -1,0 +1,72 @@
+﻿@model MVCTest.Model.EmployeeModel
+
+@{
+    ViewBag.Title = "GetSingleEmp";
+}
+
+<h2>GetSingleEmp</h2>
+
+<div>
+    <h4>EmployeeModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Country)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditEmp", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "GetAllEmp")
+</p>
