@@ -55,7 +55,6 @@ namespace MVCTest.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult Signup(UserModel model)
         {
