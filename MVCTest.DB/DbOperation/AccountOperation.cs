@@ -41,5 +41,20 @@ namespace MVCTest.DB.DbOperation
             }
            
         }
+
+        public List<UserModel> GetAllUser()
+        {
+            using (var context = new MyDBEntities())
+            {
+                var result = context.User
+                    .Select(x => new UserModel()
+                    {
+                        Id = x.Id,
+                        UserName = x.UserName,
+                        Password = x.Password
+                    }).ToList();
+                return result;
+            }
+        }
     }
 }

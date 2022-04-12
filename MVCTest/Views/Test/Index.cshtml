@@ -1,0 +1,23 @@
+﻿@using MVCTest.Model
+@model IndexVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Get Multiple Model Data on Single View </h2>
+
+<h2>Emp Data</h2>
+@foreach (var Emp in Model.Employees)
+{
+    <h4>@Emp.FirstName</h4>
+}
+
+
+<hr />
+
+<h2>User Data</h2>
+@foreach (var user in Model.User)
+{
+    <h4>@user.UserName</h4>
+}
+

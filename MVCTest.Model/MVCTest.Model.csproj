@@ -45,6 +45,7 @@
     <Compile Include="AddressModel.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EmployeeModel.cs" />
+    <Compile Include="IndexVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserModel.cs" />
   </ItemGroup>
